@@ -28,14 +28,13 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 [Aa][Rr][Mm]64[Ee][Cc]/
-bld/
-[Oo]bj/
+bld
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
 
 # Build results on 'Bin' directories
-**/[Bb]in/*
+
 # Uncomment if you have tasks that rely on *.refresh files to move binaries
 # (https://github.com/github/gitignore/pull/3736)
 #!**/[Bb]in/*.refresh
@@ -86,7 +85,6 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
-*.obj
 *.idb
 *.iobj
 *.pch
@@ -416,3 +414,4 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/dep/assimp
