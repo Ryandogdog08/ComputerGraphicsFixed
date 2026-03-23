@@ -69,3 +69,11 @@ void Scene::draw()
 	}
 }
 
+void Scene::setShaders(aie::ShaderProgram* _shader)
+{
+	for (auto it = m_instances.begin(); it != m_instances.end(); it++) {
+		Instance* instance = *it;
+		instance->setShader(_shader);
+	}
+}
+

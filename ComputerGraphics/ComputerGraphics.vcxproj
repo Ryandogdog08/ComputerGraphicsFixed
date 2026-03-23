@@ -179,6 +179,10 @@
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\bin\Shaders\negative.frag" />
+    <None Include="..\bin\Shaders\negative.vert" />
+    <None Include="..\bin\Shaders\normalColoured.frag" />
+    <None Include="..\bin\Shaders\normalColoured.vert" />
     <None Include="..\bin\Shaders\normalmap.frag" />
     <None Include="..\bin\Shaders\normalmap.vert" />
     <None Include="..\bin\Shaders\phong.frag" />

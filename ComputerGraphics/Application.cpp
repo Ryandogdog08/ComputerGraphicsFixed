@@ -66,6 +66,12 @@ bool Application::startup()
     m_normalMapShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/normalmap.vert");
     m_normalMapShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/normalmap.frag");
 
+    m_normalColouredShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/normalColoured.vert");
+    m_normalColouredShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/normalColoured.frag");
+
+    m_negativeShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/negative.vert");
+    m_negativeShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/negative.frag");
+
     if (m_shader.link() == false) {
         printf("Simple Shader Error: %s\n", m_shader.getLastError());
         return false;
@@ -81,19 +87,28 @@ bool Application::startup()
         return false;
     }
 
+    if (m_normalColouredShader.link() == false) {
+        printf("Normal Coloured Shader Error: %s\n", m_normalColouredShader.getLastError());
+        return false;
+    }
+
+    if (m_negativeShader.link() == false) {
+        printf("Negative Shader Error: %s\n", m_negativeShader.getLastError());
+        return false;
+    }
+
     m_spearMesh.initialiseFromFile("soulspear/soulspear.obj");
     m_spearMesh.loadMaterial("soulspear/soulspear.mtl");
 
     m_scene = new Scene(&m_camera, glm::vec2(m_windowWidth, m_windowHeight), m_light, m_ambientLight);
 
-    //m_scene->addInstance(new Instance(glm::vec3(0, 0, 0), glm::vec3(0, 90, 0), glm::vec3(1, 1, 1), &m_spearMesh, &m_normalMapShader));
+    m_scene->addInstance(new Instance(glm::vec3(0, 0, 0), glm::vec3(0, 90, 0), glm::vec3(1, 1, 1), &m_spearMesh, &m_normalMapShader));
     m_scene->getPointLights().push_back(Light(vec3(0, 3, 5), vec3(1, 0, 0), 50));
     m_scene->getPointLights().push_back(Light(vec3(0, 3, -5), vec3(0, 1, 0), 50));
 
-    for (int i = -4; i < 5; i++) {
+   /* for (int i = -4; i < 5; i++) {
     m_scene->addInstance(new Instance(glm::vec3(0,0,0+2.5*i),glm::vec3(0,90 - i*15,0),glm::vec3(1,1,1), &m_spearMesh, &m_normalMapShader));
-    }
-    //Test
+    }*/
 
 	return true;
 }
@@ -132,6 +147,25 @@ void Application::draw()
     Gizmos::draw(pv);
 
     m_scene->draw();
+
+    ImGui::Begin("Shader");
+    if (ImGui::Button("Simple Shader")) {
+        m_scene->setShaders(&m_shader);
+    }
+    if (ImGui::Button("Phong Shader")) {
+        m_scene->setShaders(&m_phongShader);
+    }
+    if (ImGui::Button("Normal Map Shader")) {
+        m_scene->setShaders(&m_normalMapShader);
+    }
+    if (ImGui::Button("Normal Coloured Shader")) {
+        m_scene->setShaders(&m_normalColouredShader);
+    }
+    if (ImGui::Button("Negative Shader")) {
+        m_scene->setShaders(&m_negativeShader);
+    }
+    ImGui::End();
+
     ImGui::Render();
 
    

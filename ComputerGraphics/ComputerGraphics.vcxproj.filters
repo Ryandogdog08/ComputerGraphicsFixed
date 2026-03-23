@@ -124,5 +124,17 @@
     <None Include="..\bin\Shaders\normalmap.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\bin\Shaders\normalColoured.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\normalColoured.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\negative.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\negative.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

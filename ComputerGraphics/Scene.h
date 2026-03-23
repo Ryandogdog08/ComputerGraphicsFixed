@@ -4,6 +4,7 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include "Shader.h"
 
 
 const int MAX_LIGHTS = 4;
@@ -39,6 +40,9 @@ public:
 	glm::vec3* getPointLightColours() { return &m_pointLightColours[0]; }
 	std::vector<Light>& getPointLights() { return m_pointLights; }
 
+	void setShaders(aie::ShaderProgram* _shader);
+
+
 protected:
 
 	Camera* m_camera;
@@ -54,6 +58,7 @@ protected:
 	glm::vec3 m_targetSpawnPos;
 	glm::vec3 m_targetSpawnRot;
 	glm::vec3 m_targetSpawnScale;
+
 
 };
 
