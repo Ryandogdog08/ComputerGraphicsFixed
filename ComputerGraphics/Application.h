@@ -46,6 +46,8 @@ protected:
 	aie::ShaderProgram m_normalMapShader; 
 	aie::ShaderProgram m_normalColouredShader; 
 	aie::ShaderProgram m_negativeShader; 
+	aie::ShaderProgram m_warpedShader; 
+	aie::ShaderProgram m_heightScaleShader; 
 
 	
 	Mesh m_spearMesh;

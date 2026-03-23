@@ -72,6 +72,12 @@ bool Application::startup()
     m_negativeShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/negative.vert");
     m_negativeShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/negative.frag");
 
+    m_warpedShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/warped.vert");
+    m_warpedShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/warped.frag");
+
+    m_heightScaleShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/heightScale.vert");
+    m_heightScaleShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/heightScale.frag");
+
     if (m_shader.link() == false) {
         printf("Simple Shader Error: %s\n", m_shader.getLastError());
         return false;
@@ -97,6 +103,16 @@ bool Application::startup()
         return false;
     }
 
+    if (m_warpedShader.link() == false) {
+        printf("Warped Shader Error: %s\n", m_warpedShader.getLastError());
+        return false;
+    }
+
+    if (m_heightScaleShader.link() == false) {
+        printf("Height Scale Shader Error: %s\n", m_warpedShader.getLastError());
+        return false;
+    }
+
     m_spearMesh.initialiseFromFile("soulspear/soulspear.obj");
     m_spearMesh.loadMaterial("soulspear/soulspear.mtl");
 
@@ -106,7 +122,7 @@ bool Application::startup()
     m_scene->getPointLights().push_back(Light(vec3(0, 3, 5), vec3(1, 0, 0), 50));
     m_scene->getPointLights().push_back(Light(vec3(0, 3, -5), vec3(0, 1, 0), 50));
 
-   /* for (int i = -4; i < 5; i++) {
+    /*for (int i = -4; i < 5; i++) {
     m_scene->addInstance(new Instance(glm::vec3(0,0,0+2.5*i),glm::vec3(0,90 - i*15,0),glm::vec3(1,1,1), &m_spearMesh, &m_normalMapShader));
     }*/
 
@@ -164,8 +180,14 @@ void Application::draw()
     if (ImGui::Button("Negative Shader")) {
         m_scene->setShaders(&m_negativeShader);
     }
-    ImGui::End();
+    if (ImGui::Button("Warped Shader")) {
+        m_scene->setShaders(&m_warpedShader);
+    }
+    if (ImGui::Button("Height Scale Shader")) {
+        m_scene->setShaders(&m_heightScaleShader);
+    }
 
+    ImGui::End();
     ImGui::Render();
 
    

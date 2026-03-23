@@ -1,4 +1,4 @@
-// normal map fragment shader
+// negative fragment shader
 #version 410
 
 in vec4 vPosition;

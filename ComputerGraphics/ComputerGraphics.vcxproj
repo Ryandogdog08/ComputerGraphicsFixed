@@ -179,6 +179,8 @@
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\bin\Shaders\heightScale.frag" />
+    <None Include="..\bin\Shaders\heightScale.vert" />
     <None Include="..\bin\Shaders\negative.frag" />
     <None Include="..\bin\Shaders\negative.vert" />
     <None Include="..\bin\Shaders\normalColoured.frag" />
@@ -189,6 +191,8 @@
     <None Include="..\bin\Shaders\phong.vert" />
     <None Include="..\bin\Shaders\simple.frag" />
     <None Include="..\bin\Shaders\simple.vert" />
+    <None Include="..\bin\Shaders\warped.frag" />
+    <None Include="..\bin\Shaders\warped.vert" />
     <None Include="..\bin\soulspear\soulspear.mtl" />
     <None Include="..\bin\stanford\Bunny.mtl" />
   </ItemGroup>

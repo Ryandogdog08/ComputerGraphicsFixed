@@ -80,5 +80,6 @@ vec3 diffuse = diffuseTotal * Kd * textureColour;
 vec3 specular = Ks * specularTotal * textureSpecular;
 
 // output final colour
-FragColour = vec4( N + (ambient + diffuse + specular)*0.0001f ,1 );
+FragColour = vec4( ambient + diffuse + specular,1 );
+//FragColour = vec4( N,1 );
 }

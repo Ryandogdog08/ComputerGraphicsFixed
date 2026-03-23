@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "Instance.h"
 #include "imgui_glfw3.h"
+#include <iostream>
 
 Scene::Scene(Camera* camera, glm::vec2 windowSize, Light& light, glm::vec3 ambientLight)
 {

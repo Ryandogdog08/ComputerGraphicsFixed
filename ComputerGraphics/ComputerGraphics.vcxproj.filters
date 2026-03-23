@@ -136,5 +136,17 @@
     <None Include="..\bin\Shaders\negative.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\bin\Shaders\warped.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\warped.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\heightScale.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\heightScale.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-// negative vertex shader
+// normal map vertex shader
 #version 410
 layout( location = 0 ) in vec4 Position;
 layout( location = 1 ) in vec4 Normal;
@@ -16,11 +16,11 @@ uniform mat4 ProjectionViewModel;
 uniform mat4 ModelMatrix;
 
 void main() {
-vPosition = ModelMatrix * Position;
+vPosition = ModelMatrix * vec4(Position.x*(Position.y), Position.y*(Position.y), Position.z*(Position.y), Position.w);
 vNormal = (ModelMatrix * Normal).xyz;
 vTexCoords = TexCoords;
 vTangent = (ModelMatrix * vec4(Tangent.xyz, 0)).xyz;
 vBiTangent = cross(vNormal, vTangent) * Tangent.w;
 
-gl_Position = ProjectionViewModel * Position;
+gl_Position = ProjectionViewModel * vec4(Position.x*(Position.y), Position.y*(Position.y), Position.z*(Position.y), Position.w);
 }

@@ -38,6 +38,8 @@ void Instance::draw(Scene* scene)
     m_shader->bindUniform("PointLightPosition", numLights, scene->getPointLightPositions());
     m_shader->bindUniform("PointLightColour", numLights, scene->getPointLightColours());
 
+    m_shader->bindUniform("CameraPos", scene->getCamera()->getPosition());
+
     m_mesh->draw();
 }
 
