@@ -28,5 +28,7 @@ protected:
 	Mesh* m_mesh;
 	aie::ShaderProgram* m_shader;
 
+	float m_time = 0;
+
 };
 

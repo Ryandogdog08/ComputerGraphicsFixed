@@ -15,16 +15,16 @@ uniform mat4 ProjectionViewModel;
 
 uniform mat4 ModelMatrix;
 
-uniform vec3 CameraPos;
+uniform float Time;
+
 
 void main() {
-vPosition = ModelMatrix * vec4(Position.x, Position.y, Position.z, Position.w);
+float scaling = 0.05;
+vPosition = ModelMatrix * vec4(Position.x + sin(Time + Position.y) * scaling, Position.y, Position.z + cos(Time+ Position.y) * scaling, Position.w);
 vNormal = (ModelMatrix * Normal).xyz;
 vTexCoords = TexCoords;
 vTangent = (ModelMatrix * vec4(Tangent.xyz, 0)).xyz;
 vBiTangent = cross(vNormal, vTangent) * Tangent.w;
 
-float distance = (sqrt((CameraPos.x - abs(vPosition.x))*(CameraPos.x - abs(vPosition.x)) + (CameraPos.y - abs(vPosition.y))*(CameraPos.y - abs(vPosition.y)) + (CameraPos.z - abs(vPosition.z))*(CameraPos.z - abs(vPosition.z))))/10;
-
-gl_Position = ProjectionViewModel * vec4(Position.x * distance, Position.y * distance, Position.z * distance, Position.w);
+gl_Position = ProjectionViewModel * vec4(Position.x + sin(Time + Position.y) * scaling, Position.y, Position.z + cos(Time+ Position.y) * scaling, Position.w);
 }

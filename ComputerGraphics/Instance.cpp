@@ -40,7 +40,11 @@ void Instance::draw(Scene* scene)
 
     m_shader->bindUniform("CameraPos", scene->getCamera()->getPosition());
 
+    m_time += 0.03;
+    m_shader->bindUniform("Time", m_time);
+
     m_mesh->draw();
+
 }
 
 glm::mat4 Instance::makeTransform(glm::vec3 position, glm::vec3 eulerAngles, glm::vec3 scale)

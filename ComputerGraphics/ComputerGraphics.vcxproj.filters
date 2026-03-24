@@ -148,5 +148,23 @@
     <None Include="..\bin\Shaders\heightScale.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\bin\Shaders\mirage.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\mirage.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\phantom.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\phantom.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\stealth.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\bin\Shaders\stealth.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

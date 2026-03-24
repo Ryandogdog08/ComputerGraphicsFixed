@@ -50,6 +50,9 @@ bool Application::startup()
         0,0,0,1
     };
 
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    //Enables opacity
 
     Gizmos::create(10000, 10000, 0, 0);
 
@@ -77,6 +80,15 @@ bool Application::startup()
 
     m_heightScaleShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/heightScale.vert");
     m_heightScaleShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/heightScale.frag");
+
+    m_mirageShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/mirage.vert");
+    m_mirageShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/mirage.frag");
+
+    m_phantomShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/phantom.vert");
+    m_phantomShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/phantom.frag");
+
+    m_stealthShader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/stealth.vert");
+    m_stealthShader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/stealth.frag");
 
     if (m_shader.link() == false) {
         printf("Simple Shader Error: %s\n", m_shader.getLastError());
@@ -109,7 +121,22 @@ bool Application::startup()
     }
 
     if (m_heightScaleShader.link() == false) {
-        printf("Height Scale Shader Error: %s\n", m_warpedShader.getLastError());
+        printf("Height Scale Shader Error: %s\n", m_heightScaleShader.getLastError());
+        return false;
+    }
+
+    if (m_mirageShader.link() == false) {
+        printf("Mirage Shader Error: %s\n", m_mirageShader.getLastError());
+        return false;
+    }
+
+    if (m_phantomShader.link() == false) {
+        printf("Phantom Shader Error: %s\n", m_phantomShader.getLastError());
+        return false;
+    }
+
+    if (m_stealthShader.link() == false) {
+        printf("Stealth Shader Error: %s\n", m_stealthShader.getLastError());
         return false;
     }
 
@@ -185,6 +212,15 @@ void Application::draw()
     }
     if (ImGui::Button("Height Scale Shader")) {
         m_scene->setShaders(&m_heightScaleShader);
+    }
+    if (ImGui::Button("Mirage Shader")) {
+        m_scene->setShaders(&m_mirageShader);
+    }
+    if (ImGui::Button("Phantom Shader")) {
+        m_scene->setShaders(&m_phantomShader);
+    }
+    if (ImGui::Button("Stealth Shader")) {
+        m_scene->setShaders(&m_stealthShader);
     }
 
     ImGui::End();

@@ -48,6 +48,11 @@ protected:
 	aie::ShaderProgram m_negativeShader; 
 	aie::ShaderProgram m_warpedShader; 
 	aie::ShaderProgram m_heightScaleShader; 
+	aie::ShaderProgram m_mirageShader; 
+	aie::ShaderProgram m_phantomShader; 
+	aie::ShaderProgram m_stealthShader; 
+
+
 
 	
 	Mesh m_spearMesh;
