@@ -28,6 +28,7 @@ uniform sampler2D specularTex;
 uniform sampler2D normalTex;
 
 uniform vec3 CameraPos;
+uniform float Scaling1;
 
 out vec4 FragColour;
 
@@ -82,6 +83,6 @@ vec3 diffuse = diffuseTotal * Kd * textureColour;
 vec3 specular = Ks * specularTotal * textureSpecular;
 
 // output final colour
-FragColour = vec4( ambient + diffuse + specular, 1.0f - vPosition.y/4 );
+FragColour = vec4( ambient + diffuse + specular, Scaling1 - vPosition.y/4 );
 //FragColour = vec4( N,1 );
 }

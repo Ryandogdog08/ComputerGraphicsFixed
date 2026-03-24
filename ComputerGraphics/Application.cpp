@@ -169,7 +169,6 @@ bool Application::update()
     return (glfwWindowShouldClose(m_window) == false && glfwGetKey(m_window, GLFW_KEY_ESCAPE) != GLFW_PRESS);
 }
 
-
 void Application::draw()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -194,39 +193,73 @@ void Application::draw()
     ImGui::Begin("Shader");
     if (ImGui::Button("Simple Shader")) {
         m_scene->setShaders(&m_shader);
+        m_activeShader = 1;
     }
     if (ImGui::Button("Phong Shader")) {
         m_scene->setShaders(&m_phongShader);
+        m_activeShader = 2;
     }
     if (ImGui::Button("Normal Map Shader")) {
         m_scene->setShaders(&m_normalMapShader);
+        m_activeShader = 3;
     }
     if (ImGui::Button("Normal Coloured Shader")) {
         m_scene->setShaders(&m_normalColouredShader);
+        m_activeShader = 4;
     }
     if (ImGui::Button("Negative Shader")) {
         m_scene->setShaders(&m_negativeShader);
+        m_activeShader = 5;
     }
     if (ImGui::Button("Warped Shader")) {
         m_scene->setShaders(&m_warpedShader);
-    }
-    if (ImGui::Button("Height Scale Shader")) {
-        m_scene->setShaders(&m_heightScaleShader);
-    }
-    if (ImGui::Button("Mirage Shader")) {
-        m_scene->setShaders(&m_mirageShader);
-    }
-    if (ImGui::Button("Phantom Shader")) {
-        m_scene->setShaders(&m_phantomShader);
+        m_activeShader = 6;
     }
     if (ImGui::Button("Stealth Shader")) {
         m_scene->setShaders(&m_stealthShader);
+        m_activeShader = 7;
     }
-
+    if (ImGui::Button("Height Scale Shader")) {
+        m_scene->setShaders(&m_heightScaleShader);
+        m_activeShader = 8;
+        m_scene->setShaderScaling1(1);
+    }
+    if (ImGui::Button("Mirage Shader")) {
+        m_scene->setShaders(&m_mirageShader);
+        m_activeShader = 9;
+        m_scene->setShaderScaling1(1);
+        m_scene->setShaderScaling2(1);
+    }
+    if (ImGui::Button("Phantom Shader")) {
+        m_scene->setShaders(&m_phantomShader);
+        m_activeShader = 10;
+        m_scene->setShaderScaling1(1);
+        m_scene->setShaderScaling2(1);
+    }
     ImGui::End();
-    ImGui::Render();
 
-   
+    if (m_activeShader > 7) {
+        ImGui::Begin("Shader Controls");
+       
+        if (m_activeShader == 8) {
+            ImGui::DragFloat("Base Scale", m_scene->getShaderScaling1(), 0.1f, 0.1f, 10.0f);
+        }
+        if (m_activeShader == 9) {
+            ImGui::DragFloat("Vanishing Distance", m_scene->getShaderScaling1(), 0.1f, 1.0f, 5.0f);
+            ImGui::DragFloat("Distortion Power", m_scene->getShaderScaling2(), 0.1f, 0.0f, 10.0f);
+        }
+        if (m_activeShader == 10) {
+            ImGui::DragFloat("Vanishing Height", m_scene->getShaderScaling1(), 0.1f, 0.0f, 30.0f);
+            ImGui::DragFloat("Distortion Power", m_scene->getShaderScaling2(), 0.1f, 0.0f, 10.0f);
+        }
+        ImGui::End();
+        m_scene->setShaderScaling1OnInstances();
+        m_scene->setShaderScaling2OnInstances();
+        m_scene->setShaderScaling3OnInstances();
+    } //Shaders with controls 
+
+
+    ImGui::Render();
 }
 
 void Application::shutdown()

@@ -23,12 +23,19 @@ public:
 	void setShader(aie::ShaderProgram* _shader) { m_shader = _shader; }
 	Mesh* getMesh() { return m_mesh; }
 
+	void setShaderScaling1(float _value) { m_shaderScaling1 = _value; }
+	void setShaderScaling2(float _value) { m_shaderScaling2 = _value; }
+	void setShaderScaling3(float _value) { m_shaderScaling3 = _value; }
+
 protected:
 	glm::mat4 m_transform;
 	Mesh* m_mesh;
 	aie::ShaderProgram* m_shader;
 
 	float m_time = 0;
+	float m_shaderScaling1;
+	float m_shaderScaling2;
+	float m_shaderScaling3;
 
 };
 

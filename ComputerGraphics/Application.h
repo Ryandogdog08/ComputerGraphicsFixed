@@ -52,7 +52,7 @@ protected:
 	aie::ShaderProgram m_phantomShader; 
 	aie::ShaderProgram m_stealthShader; 
 
-
+	int m_activeShader = 3;
 
 	
 	Mesh m_spearMesh;

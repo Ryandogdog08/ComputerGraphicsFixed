@@ -16,10 +16,11 @@ uniform mat4 ProjectionViewModel;
 uniform mat4 ModelMatrix;
 
 uniform float Time;
+uniform float Scaling2;
 
 
 void main() {
-float scaling = 0.05;
+float scaling = 0.05 * Scaling2;
 vPosition = ModelMatrix * vec4(Position.x + sin(Time) * scaling, Position.y, Position.z + cos(Time) * scaling, Position.w);
 vNormal = (ModelMatrix * Normal).xyz;
 vTexCoords = TexCoords;

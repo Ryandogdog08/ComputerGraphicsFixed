@@ -78,3 +78,29 @@ void Scene::setShaders(aie::ShaderProgram* _shader)
 	}
 }
 
+void Scene::setShaderScaling1OnInstances()
+{
+	for (auto it = m_instances.begin(); it != m_instances.end(); it++) {
+		Instance* instance = *it;
+		instance->setShaderScaling1(m_shaderScaling1);
+	}
+}
+
+void Scene::setShaderScaling2OnInstances()
+{
+	for (auto it = m_instances.begin(); it != m_instances.end(); it++) {
+		Instance* instance = *it;
+		instance->setShaderScaling2(m_shaderScaling2);
+	}
+}
+
+void Scene::setShaderScaling3OnInstances()
+{
+	for (auto it = m_instances.begin(); it != m_instances.end(); it++) {
+		Instance* instance = *it;
+		instance->setShaderScaling3(m_shaderScaling3);
+	}
+}
+
+
+

@@ -17,7 +17,6 @@ uniform mat4 ModelMatrix;
 
 
 void main() {
-float scaling = 0.05;
 vPosition = ModelMatrix * Position;
 vNormal = (ModelMatrix * Normal).xyz;
 vTexCoords = TexCoords;

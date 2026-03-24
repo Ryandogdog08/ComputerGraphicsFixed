@@ -43,6 +43,10 @@ void Instance::draw(Scene* scene)
     m_time += 0.03;
     m_shader->bindUniform("Time", m_time);
 
+    m_shader->bindUniform("Scaling1", m_shaderScaling1);
+    m_shader->bindUniform("Scaling2", m_shaderScaling2);
+    m_shader->bindUniform("Scaling3", m_shaderScaling3);
+
     m_mesh->draw();
 
 }

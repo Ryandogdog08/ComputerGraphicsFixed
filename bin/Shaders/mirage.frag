@@ -28,6 +28,7 @@ uniform sampler2D specularTex;
 uniform sampler2D normalTex;
 
 uniform vec3 CameraPos;
+uniform float Scaling1;
 
 out vec4 FragColour;
 
@@ -81,7 +82,7 @@ vec3 ambient = AmbientColour * Ka * textureColour;
 vec3 diffuse = diffuseTotal * Kd * textureColour;
 vec3 specular = Ks * specularTotal * textureSpecular;
 
-float distance = (sqrt((CameraPos.x - abs(vPosition.x))*(CameraPos.x - abs(vPosition.x)) + (CameraPos.y - abs(vPosition.y))*(CameraPos.y - abs(vPosition.y)) + (CameraPos.z - abs(vPosition.z))*(CameraPos.z - abs(vPosition.z))))/20 - 0.1;
+float distance = (sqrt((CameraPos.x - abs(vPosition.x))*(CameraPos.x - abs(vPosition.x)) + (CameraPos.y - abs(vPosition.y))*(CameraPos.y - abs(vPosition.y)) + (CameraPos.z - abs(vPosition.z))*(CameraPos.z - abs(vPosition.z))))/20 - 0.1*Scaling1;
 if (distance > 1) { distance = 1;}
 
 // output final colour

@@ -41,7 +41,17 @@ public:
 	std::vector<Light>& getPointLights() { return m_pointLights; }
 
 	void setShaders(aie::ShaderProgram* _shader);
+	void setShaderScaling1OnInstances();
+	void setShaderScaling2OnInstances();
+	void setShaderScaling3OnInstances();
 
+	void setShaderScaling1(float _value) { m_shaderScaling1 = _value; }
+	void setShaderScaling2(float _value) { m_shaderScaling2 = _value; }
+	void setShaderScaling3(float _value) { m_shaderScaling3 = _value; }
+
+	float* getShaderScaling1() { return &m_shaderScaling1; }
+	float* getShaderScaling2() { return &m_shaderScaling2; }
+	float* getShaderScaling3() { return &m_shaderScaling3; }
 
 protected:
 
@@ -58,6 +68,10 @@ protected:
 	glm::vec3 m_targetSpawnPos;
 	glm::vec3 m_targetSpawnRot;
 	glm::vec3 m_targetSpawnScale;
+
+	float m_shaderScaling1;
+	float m_shaderScaling2;
+	float m_shaderScaling3;
 
 
 };
