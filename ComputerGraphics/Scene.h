@@ -13,13 +13,22 @@ class Instance;
 struct Light {
 	glm::vec3 direction;
 	glm::vec3 colour;
+	glm::vec3 colourValue;
+	float m_intensity;
 
 	Light() {};
 	Light(glm::vec3 pos, glm::vec3 col, float intensity)
 	{
 		direction = pos;
-		colour = col * intensity;
+		m_intensity = intensity;
+		colourValue = col;
+		updateColour();
 	}
+	glm::vec3* getDirection() { return &direction; }
+	glm::vec3* getColour() { return &colourValue; }
+	float* getIntensity() { return &m_intensity; }
+
+	void updateColour() { colour = colourValue * m_intensity; }
 };
 
 class Scene
@@ -53,6 +62,8 @@ public:
 	float* getShaderScaling2() { return &m_shaderScaling2; }
 	float* getShaderScaling3() { return &m_shaderScaling3; }
 
+	bool getShowGui() { return m_showGui; }
+
 protected:
 
 	Camera* m_camera;
@@ -72,6 +83,8 @@ protected:
 	float m_shaderScaling1;
 	float m_shaderScaling2;
 	float m_shaderScaling3;
+
+	bool m_showGui = true;
 
 
 };

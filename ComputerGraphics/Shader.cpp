@@ -142,7 +142,7 @@ bool ShaderProgram::bindUniform(const char* name, int value) {
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform1i(i, value);
@@ -197,7 +197,7 @@ bool ShaderProgram::bindUniform(const char* name, const glm::mat2& value) {
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniformMatrix2fv(i, 1, GL_FALSE, &value[0][0]);
@@ -230,7 +230,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, int* value) {
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform1iv(i, count, value);
@@ -241,7 +241,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, float* value) {
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform1fv(i, count, value);
@@ -252,7 +252,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::vec2* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform2fv(i, count, (float*)value);
@@ -263,7 +263,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::vec3* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform3fv(i, count, (float*)value);
@@ -274,7 +274,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::vec4* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniform4fv(i, count, (float*)value);
@@ -285,7 +285,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::mat2* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniformMatrix2fv(i, count, GL_FALSE, (float*)value);
@@ -296,7 +296,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::mat3* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniformMatrix3fv(i, count, GL_FALSE, (float*)value);
@@ -307,7 +307,7 @@ bool ShaderProgram::bindUniform(const char* name, int count, const glm::mat4* va
 	assert(m_program > 0 && "Invalid shader program");
 	int i = glGetUniformLocation(m_program, name);
 	if (i < 0) {
-		printf("Shader uniform [%s] not found! Is it being used?\n", name);
+		//printf("Shader uniform [%s] not found! Is it being used?\n", name);
 		return false;
 	}
 	glUniformMatrix4fv(i, count, GL_FALSE, (float*)value);
