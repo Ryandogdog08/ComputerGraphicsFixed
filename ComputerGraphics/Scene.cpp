@@ -59,7 +59,7 @@ void Scene::draw()
 		ImGui::DragFloat3("Spawn Rotation", (float*)&m_targetSpawnRot, 1.0f, -180.0f, 180.0f);
 		ImGui::DragFloat3("Spawn Scale", (float*)&m_targetSpawnScale, 0.1f, 0.1f, 10.0f);
 		ImGui::End();
-
+		
 		ImGui::Begin("Point Light Controls");
 		if (ImGui::Button("Spawn New Light") && m_pointLights.size() < MAX_LIGHTS) {
 			m_pointLights.push_back(Light(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), 50));
