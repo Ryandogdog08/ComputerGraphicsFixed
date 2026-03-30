@@ -59,6 +59,10 @@ bool Application::startup()
     aie::ImGui_Init(m_window, true);
 
     glfwSetCursorPosCallback(m_window, &Application::setMousePosition);
+   
+    //Char callback allows for keyboard inputs to be registered 
+    glfwSetCharCallback(m_window, aie::ImGui_CharCallback);
+    
 
     m_shader.loadShader(aie::eShaderStage::VERTEX, "./Shaders/simple.vert");
     m_shader.loadShader(aie::eShaderStage::FRAGMENT, "./Shaders/simple.frag");
