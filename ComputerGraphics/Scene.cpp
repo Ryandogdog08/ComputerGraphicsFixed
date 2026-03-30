@@ -80,7 +80,7 @@ void Scene::draw()
 		}
 		ImGui::End();
 	}
-
+	
 	ImGui::Begin("GUI Controls");
 	if (ImGui::Button("Toggle GUI")) {
 		m_showGui = !m_showGui;
